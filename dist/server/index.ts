@@ -16,6 +16,19 @@ const server = http.createServer(app);
 // Create a new WebSocket server
 const wss = new WebSocket.Server({ server });
 
+
+
+app.get('/data', (req, res) => {
+  const data = [
+    { id: 1, name: 'John Doe' },
+    { id: 2, name: 'Jane Doe' },
+    { id: 3, name: 'Bob Smith' }
+  ];
+
+  res.json(data);
+});
+
+
 app.post("/webhook", jsonParser, (req, res) => {
   // Broadcast the notification to all connected clients
   // In a real app, you would probably want to send to specific clients
